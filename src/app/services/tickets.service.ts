@@ -13,9 +13,11 @@ import { Event } from '../interfaces/event.interface';
 })
 export class TicketsService {
 
-  id: string = "0";
+  id: string = "68";
 
   endpointList: string = "assets/data/events.json";
+  endpointDetail: string = "assets/data/event-info-"
+  jsonExtension: string = ".json";
 
 
   constructor(private httpClient: HttpClient) { }
@@ -24,5 +26,12 @@ export class TicketsService {
   // Get all events
   getEvents(): Observable<Response[]> {
     return this.httpClient.get<Response[]>(this.endpointList);
+  }
+
+
+  // Get detail event
+  getEventInfo(): Observable<Event>{
+    return this.httpClient.get<Event>(`${this.endpointDetail}${this.id}${this.jsonExtension}`);
+
   }
 }
