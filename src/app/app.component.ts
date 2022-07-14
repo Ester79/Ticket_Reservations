@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TicketsService } from './services/tickets.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  constructor(private ticketService: TicketsService){}
 }
