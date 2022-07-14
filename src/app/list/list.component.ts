@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppRoutingModule } from '../app-routing.module';
 
 @Component({
   selector: 'app-list',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private routingModule: AppRoutingModule) { }
 
   ngOnInit(): void {
   }
