@@ -4,12 +4,12 @@
 <div class="container">
   <div class="card" *ngFor="let singleEvent of listEvents">
     <div class="card-body">
-      <a [routerLink]="['/details']"><h1>{{singleEvent.title}}</h1></a>
-      <a [routerLink]="['/details']"><h6>{{singleEvent.subtitle}}1</h6></a>
-      <a [routerLink]="['/details']"><img src="../assets/img/sample-image.jpg" alt="sample-image"></a>
+      <a [routerLink]="['/details']" (click)="selectedEvent(singleEvent)"><h1>{{singleEvent.title}}</h1></a>
+      <a [routerLink]="['/details']" (click)="selectedEvent(singleEvent)"><h6>{{singleEvent.subtitle}}1</h6></a>
+      <a [routerLink]="['/details']" (click)="selectedEvent(singleEvent)"><img src="../assets/img/sample-image.jpg" alt="sample-image"></a>
       <p class="card-text">{{singleEvent.startDate | date }} - {{singleEvent.endDate | date}}</p>
       <p class="card-text">{{singleEvent.description}}</p>
-      <button type="button" class="btn-primary btn-block" [routerLink]="['/details']">Comprar</button>
+      <button type="button" class="btn-primary btn-block" (click)="selectedEvent(singleEvent)" [routerLink]="['/details']">Comprar</button>
     </div>
   </div>
 </div>

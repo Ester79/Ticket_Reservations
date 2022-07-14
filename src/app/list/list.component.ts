@@ -37,6 +37,12 @@ export class ListComponent implements OnInit {
       })
   }
 
+  selectedEvent(singleEvent: Billboard){
+    console.log("ENTER TO SELECTED EVENT");
+    this.ticketsService.eventSelected = singleEvent;
+    console.log(singleEvent);
+  }
+
 
 
 }

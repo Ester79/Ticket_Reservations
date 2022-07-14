@@ -13,14 +13,24 @@ import { Event } from '../interfaces/event.interface';
 })
 export class TicketsService {
 
-  id: string = "184";
-
+  id: string = "";
   endpointList: string = "assets/data/events.json";
   endpointDetail: string = "assets/data/event-info-"
   jsonExtension: string = ".json";
 
+  _eventSelected: any = null // full object event selected
+
 
   constructor(private httpClient: HttpClient) { }
+
+  // Get object event selected
+  get eventSelected(){
+    return this._eventSelected;
+  }
+  // Set object event selected
+  set eventSelected(value: Billboard) {
+    this._eventSelected = value;
+  }
 
 
   // Get all events
@@ -31,7 +41,6 @@ export class TicketsService {
 
   // Get detail event
   getEventInfo(): Observable<Event>{
-    return this.httpClient.get<Event>(`${this.endpointDetail}${this.id}${this.jsonExtension}`);
-
+    return this.httpClient.get<Event>(`${this.endpointDetail}${this._eventSelected?.id}${this.jsonExtension}`);
   }
 }
