@@ -17,6 +17,7 @@ import { TicketsService } from '../services/tickets.service';
 export class DetailsComponent implements OnInit {
 
   detailEvent: Calendar[] = [];
+  locations: number = 0;
 
   constructor(private router: Router,
     private routingModule: AppRoutingModule,
@@ -33,8 +34,15 @@ export class DetailsComponent implements OnInit {
       this.detailEvent = dataEvent.sessions;
       console.log("DETAIL EVENT");
       console.log(this.detailEvent);
-    })
+    });
+  }
 
+  removeLocation(){
+    console.log("Enter ot remove method");
+  }
+
+  addLocation(){
+    console.log("Enter ot add method");
   }
 
 }

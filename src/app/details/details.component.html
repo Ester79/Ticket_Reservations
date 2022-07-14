@@ -1,3 +1,16 @@
 
 <app-header></app-header>
-<p>details works!</p>
+
+<div class="container">
+  <div class="table">
+    <tbody>
+      <tr *ngFor="let singleDetail of detailEvent">
+        <td>Fecha: {{singleDetail.date | date}}</td>
+        <td>Disponibilidad: {{singleDetail.availability}}</td>
+        <td><button (click)="removeLocation()">-</button></td>
+        <p>{{locations}}</p>
+        <td><button (click)="addLocation()">+</button></td>
+      </tr>
+    </tbody>
+  </div>
+</div>
