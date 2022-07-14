@@ -16,7 +16,7 @@ import { TicketsService } from '../services/tickets.service';
 })
 export class ListComponent implements OnInit {
 
-  listEvents: Response[] = [];
+  listEvents: any = [];
 
   constructor(private router: Router,
     private routingModule: AppRoutingModule,

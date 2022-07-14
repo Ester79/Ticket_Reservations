@@ -13,7 +13,7 @@ import { Event } from '../interfaces/event.interface';
 })
 export class TicketsService {
 
-  id: string = "68";
+  id: string = "184";
 
   endpointList: string = "assets/data/events.json";
   endpointDetail: string = "assets/data/event-info-"

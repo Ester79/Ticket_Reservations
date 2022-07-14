@@ -12,3 +12,4 @@ export interface Billboard {
   endDate: string;
   description: string;
 }
+
