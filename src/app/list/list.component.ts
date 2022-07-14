@@ -32,17 +32,14 @@ export class ListComponent implements OnInit {
     this.ticketsService.getEvents()
       .subscribe(dataEvents => {
         this.listEvents = dataEvents;
-        console.log("LIST EVENTS");
+        console.log("List Events");
         console.log(this.listEvents);
       })
   }
 
   selectedEvent(singleEvent: Billboard){
-    console.log("ENTER TO SELECTED EVENT");
     this.ticketsService.eventSelected = singleEvent;
     console.log(singleEvent);
   }
-
-
 
 }

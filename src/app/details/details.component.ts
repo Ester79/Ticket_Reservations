@@ -5,6 +5,7 @@ import { AppRoutingModule } from '../app-routing.module';
 // interfaces
 import { Billboard } from '../interfaces/billboard.interface';
 import { Event, Calendar } from '../interfaces/event.interface';
+import { Purchase } from '../interfaces/purchase.interface';
 
 // Service
 import { TicketsService } from '../services/tickets.service';
@@ -16,8 +17,9 @@ import { TicketsService } from '../services/tickets.service';
 })
 export class DetailsComponent implements OnInit {
 
-  detailEvent: Calendar[] = [];
-  locations: number = 0;
+  detailEvent: any;
+
+
 
   constructor(private router: Router,
     private routingModule: AppRoutingModule,
@@ -30,19 +32,26 @@ export class DetailsComponent implements OnInit {
 
   loadDetail(): void {
     this.ticketsService.getEventInfo()
-    .subscribe(dataEvent => {
-      this.detailEvent = dataEvent.sessions;
-      console.log("DETAIL EVENT");
-      console.log(this.detailEvent);
-    });
+      .subscribe(dataEvent => {
+        this.detailEvent = dataEvent;
+        console.log("Detail event");
+        console.log(this.detailEvent);
+      });
   }
 
-  removeLocation(){
-    console.log("Enter ot remove method");
+  removeLocation(singleDetail: Calendar) {
+    this.ticketsService.removeFromCart(this.detailEvent, singleDetail, 1);
+    console.log("final purchase");
+    console.log(this.ticketsService._purchase)
   }
 
-  addLocation(){
-    console.log("Enter ot add method");
+  addLocation(detail: Calendar) {
+    this.ticketsService.addToCart(this.detailEvent, detail, 1);
+    this.ticketsService.getCartByArtist();
+  }
+
+  getSelected(detail: Calendar) {
+    return this.ticketsService.getSelected(this.detailEvent.event.id, detail.date);
   }
 
 }

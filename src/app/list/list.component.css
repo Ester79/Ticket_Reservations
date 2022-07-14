@@ -1,0 +1,16 @@
+.container {
+ display: flex;
+}
+
+
+
+.card-columns{
+  width: 50%;
+  display: flex;
+
+}
+
+.card-body {
+  width: 40%
+}
+

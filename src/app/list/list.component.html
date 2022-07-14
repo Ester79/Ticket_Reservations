@@ -1,15 +1,14 @@
 <app-header></app-header>
 
 
-<div class="container">
-  <div class="card" *ngFor="let singleEvent of listEvents">
-    <div class="card-body">
-      <a [routerLink]="['/details']" (click)="selectedEvent(singleEvent)"><h1>{{singleEvent.title}}</h1></a>
+<div class="container card-columns">
+  <div class="card ">
+  <div class=" card card-body " *ngFor="let singleEvent of listEvents">
+      <a [routerLink]="['/details']" (click)="selectedEvent(singleEvent)" ><h1>{{singleEvent.title}}</h1></a>
       <a [routerLink]="['/details']" (click)="selectedEvent(singleEvent)"><h6>{{singleEvent.subtitle}}1</h6></a>
-      <a [routerLink]="['/details']" (click)="selectedEvent(singleEvent)"><img src="../assets/img/sample-image.jpg" alt="sample-image"></a>
+      <a [routerLink]="['/details']" (click)="selectedEvent(singleEvent)"><img src="../assets/img/sample-image.jpg" alt="sample-image" width="100%"></a>
       <p class="card-text">{{singleEvent.startDate | date }} - {{singleEvent.endDate | date}}</p>
       <p class="card-text">{{singleEvent.description}}</p>
       <button type="button" class="btn-primary btn-block" (click)="selectedEvent(singleEvent)" [routerLink]="['/details']">Comprar</button>
     </div>
-  </div>
 </div>

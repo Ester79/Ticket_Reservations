@@ -4,12 +4,12 @@
 <div class="container">
   <div class="table">
     <tbody>
-      <tr *ngFor="let singleDetail of detailEvent">
+      <tr *ngFor="let singleDetail of detailEvent?.sessions">
         <td>Fecha: {{singleDetail.date | date}}</td>
         <td>Disponibilidad: {{singleDetail.availability}}</td>
-        <td><button (click)="removeLocation()">-</button></td>
-        <p>{{locations}}</p>
-        <td><button (click)="addLocation()">+</button></td>
+        <td><button (click)="removeLocation(singleDetail)">-</button></td>
+        <td>{{getSelected(singleDetail)}}</td>
+        <td><button (click)="addLocation(singleDetail)">+</button></td>
       </tr>
     </tbody>
   </div>
