@@ -20,10 +20,8 @@ export class TicketsService {
   jsonExtension: string = ".json";
 
   _eventSelected: any = null // full object event selected
-  _locationsSelected: any = null;
 
   _purchase: Purchase[] = [];
-
 
 
   constructor(private httpClient: HttpClient) { }
@@ -37,16 +35,14 @@ export class TicketsService {
     this._eventSelected = value;
   }
 
-
-  // Get locations selected
-  get locationsSelected() {
-    return this._locationsSelected;
+  // Get purchase selected
+  get purchase() {
+    return this._purchase;
   }
-  // Set locations selected
-  set locationsSelected(value: Event) {
-    this._locationsSelected = value;
+  // Set purchase selected
+  set purchase(value: Purchase[]) {
+    this._purchase = value;
   }
-
 
 
 
@@ -61,25 +57,25 @@ export class TicketsService {
     return this.httpClient.get<Event>(`${this.endpointDetail}${this._eventSelected?.id}${this.jsonExtension}`);
   }
 
-  addToCart(event: Event, session: Calendar , quantity: number) {
-    for (let i=0;i<this._purchase.length; i++) {
+  addToCart(event: Event, session: Calendar, quantity: number) {
+    for (let i = 0; i < this._purchase.length; i++) {
       if (this._purchase[i].event.event.id == event.event.id && this._purchase[i].session.date == session.date) {
-        if(this._purchase[i].quantity + 1 <= new Number(session.availability)) {
+        if (this._purchase[i].quantity + 1 <= new Number(session.availability)) {
           this._purchase[i].quantity++;
         }
         return;
       }
     }
-    this._purchase.push({event: event, session: session, quantity: 1});
+    this._purchase.push({ event: event, session: session, quantity: 1 });
   }
 
-  removeFromCart(event: Event, session: Calendar, quantity: number){
+  removeFromCart(event: Event, session: Calendar, quantity: number) {
     let indexToRemove = -1;
-    for(let i= 0; i < this._purchase.length; i++){
-      if(this._purchase[i].event.event.id == event.event.id && this._purchase[i].session.date == session.date){
-        if(this._purchase[i].quantity > 1){
+    for (let i = 0; i < this._purchase.length; i++) {
+      if (this._purchase[i].event.event.id == event.event.id && this._purchase[i].session.date == session.date) {
+        if (this._purchase[i].quantity > 1) {
           this._purchase[i].quantity--;
-        }else{
+        } else {
           indexToRemove = i;
         }
         break;
@@ -94,7 +90,7 @@ export class TicketsService {
 
   getCartByArtist() {
     let map = new Map();
-    for (let i=0; i< this._purchase.length; i++) {
+    for (let i = 0; i < this._purchase.length; i++) {
       let key = this._purchase[i].event.event.title;
       if (map.has(key)) {
         map.get(key).push(this._purchase[i]);
@@ -102,12 +98,13 @@ export class TicketsService {
         map.set(key, [this._purchase[i]]);
       }
     }
+    console.log("map");
     console.log(map);
     return map;
   }
 
   getSelected(id: string, session: string) {
-    for (let i=0;i<this._purchase.length; i++) {
+    for (let i = 0; i < this._purchase.length; i++) {
       if (this._purchase[i].event.event.id == id && this._purchase[i].session.date == session) {
         return this._purchase[i].quantity;
       }
