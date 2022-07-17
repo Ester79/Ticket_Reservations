@@ -1,13 +1,18 @@
+.container{
+  display: flex;
+  margin-top: 20px;
+}
+
+h3{
+  color: darkred;
+}
+
+
 button {
   border: none;
   background-color: lightskyblue;
   border-radius: 3px;
   font-weight: bold;
-}
-
-.container{
-  display: flex;
-  margin-top: 20px;
 }
 
 .error {
@@ -41,9 +46,6 @@ button {
 
   .table{
     width: 100%;
-    /*display: flex;
-    justify-content: center;*/
-
     font-size: 13px;
   }
 }
