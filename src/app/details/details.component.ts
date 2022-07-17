@@ -36,7 +36,6 @@ export class DetailsComponent implements OnInit {
       .subscribe({
         next: dataEvent => {
           this.detailEvent = dataEvent;
-
           this.detailEvent.sessions.sort((a: Calendar, b: Calendar) =>
           parseInt(a.date) - parseInt(b.date));
           this.errorMessage = "";
@@ -47,8 +46,6 @@ export class DetailsComponent implements OnInit {
 
   removeLocation(singleDetail: Calendar) {
     this.ticketsService.removeFromCart(this.detailEvent, singleDetail, 1);
-    console.log("final purchase");
-    console.log(this.ticketsService._purchase)
   }
 
   addLocation(detail: Calendar) {

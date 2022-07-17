@@ -35,9 +35,7 @@ export class ListComponent implements OnInit {
       .subscribe(dataEvents => {
         this.listEvents = dataEvents;
         this.listEvents.sort((a: Billboard, b: Billboard) =>
-          parseInt(a.endDate) - parseInt(b.endDate) );
-        console.log("List Events");
-        console.log(this.listEvents);
+          parseInt(a.endDate) - parseInt(b.endDate));
       })
   }
 

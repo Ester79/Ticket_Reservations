@@ -57,10 +57,12 @@ export class TicketsService {
     return this.httpClient.get<Event>(`${this.endpointDetail}${this._eventSelected?.id}${this.jsonExtension}`);
   }
 
+
+  // Check if the Event has been selected before, in case yes, add +1 quantity to the line
   addToCart(event: Event, session: Calendar, quantity: number) {
     for (let i = 0; i < this._purchase.length; i++) {
       if (this._purchase[i].event.event.id == event.event.id && this._purchase[i].session.date == session.date) {
-        if (this._purchase[i].quantity + 1 <= new Number(session.availability)) {
+        if (this._purchase[i].quantity + 1 <= new Number(session.availability)) { // Prevent to select more locations than availability
           this._purchase[i].quantity++;
         }
         return;
@@ -73,7 +75,7 @@ export class TicketsService {
     let indexToRemove = -1;
     for (let i = 0; i < this._purchase.length; i++) {
       if (this._purchase[i].event.event.id == event.event.id && this._purchase[i].session.date == session.date) {
-        if (this._purchase[i].quantity > 1) {
+        if (this._purchase[i].quantity > 1) { // if there are more than one location selected remove 1
           this._purchase[i].quantity--;
         } else {
           indexToRemove = i;
@@ -81,11 +83,9 @@ export class TicketsService {
         break;
       }
     }
-
     if (indexToRemove >= 0) {
       this._purchase.splice(indexToRemove, 1);
     }
-
   }
 
   getCartByArtist() {
@@ -98,8 +98,6 @@ export class TicketsService {
         map.set(key, [this._purchase[i]]);
       }
     }
-    console.log("map");
-    console.log(map);
     return map;
   }
 

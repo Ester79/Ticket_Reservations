@@ -1,6 +1,6 @@
 
 <div class="table table-borderless">
-    <div *ngFor="let artist of getCart().keys()">
+    <div class="report" *ngFor="let artist of getCart().keys()">
       <h1>{{artist}}</h1>
       <table>
         <tr *ngFor="let purchase of getCart().get(artist)" >
