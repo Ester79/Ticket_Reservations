@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { right } from '@popperjs/core';
 import { AppRoutingModule } from '../app-routing.module';
 
 // interfaces
@@ -32,14 +33,16 @@ export class DetailsComponent implements OnInit {
 
   loadDetail(): void {
     this.ticketsService.getEventInfo()
-      .subscribe({ next: dataEvent => {
-        this.detailEvent = dataEvent;
-        console.log("Detail event");
-        console.log(this.detailEvent);
-        this.errorMessage = "";
-      },
-      error: error => {this.errorMessage = "EVENT INFO NOT FOUND for " + this.ticketsService.eventSelected.title} });
+      .subscribe({
+        next: dataEvent => {
+          this.detailEvent = dataEvent;
 
+          this.detailEvent.sessions.sort((a: Calendar, b: Calendar) =>
+          parseInt(a.date) - parseInt(b.date));
+          this.errorMessage = "";
+        },
+        error: error => { this.errorMessage = "EVENT INFO NOT FOUND for " + this.ticketsService.eventSelected.title }
+      });
   }
 
   removeLocation(singleDetail: Calendar) {
