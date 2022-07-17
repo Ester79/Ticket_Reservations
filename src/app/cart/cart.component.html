@@ -7,7 +7,7 @@
       <h1>{{artist}}</h1>
       <table>
         <tr  *ngFor="let purchase of getCart().get(artist)" >
-          <td>{{purchase.session.date | date}}</td>
+          <td>{{purchase.session.date | date: 'dd/MM/yyyy'}}</td>
           <td>{{purchase.quantity}}</td>
           <td><a  (click)="delete(purchase)"><img src="../assets/img/trash.png" alt="trash" width="15px"></a></td>
         </tr>

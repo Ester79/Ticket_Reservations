@@ -8,7 +8,7 @@
   <div class="table">
     <tbody>
       <tr *ngFor="let singleDetail of detailEvent?.sessions">
-        <td>Fecha: {{singleDetail.date | date}}</td>
+        <td>Fecha: {{singleDetail.date | date: 'dd/MM/yyyy'}}</td>
         <td>Disponibilidad: {{singleDetail.availability}}</td>
         <td><button (click)="removeLocation(singleDetail)">-</button></td>
         <td>{{getSelected(singleDetail)}}</td>
