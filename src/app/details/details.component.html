@@ -1,11 +1,12 @@
-
 <app-header></app-header>
-<nav class="nav">
-  <a  [routerLink]="['/list']">Back to list</a>
-</nav>
 
-<div class="container">
-  <div class="table">
+<div class="goToList">
+  <a [routerLink]="['/list']">Back to list</a>
+</div>
+
+<div class="container ">
+
+  <div class="table table-borderless col-md-6">
     <tbody>
       <tr *ngFor="let singleDetail of detailEvent?.sessions">
         <td>Fecha: {{singleDetail.date | date: 'dd/MM/yyyy'}}</td>
@@ -13,8 +14,14 @@
         <td><button (click)="removeLocation(singleDetail)">-</button></td>
         <td>{{getSelected(singleDetail)}}</td>
         <td><button (click)="addLocation(singleDetail)">+</button></td>
+
       </tr>
     </tbody>
+    <div class="error">
+      <h3 *ngIf="errorMessage != ''">{{errorMessage}}</h3>
+    </div>
+
   </div>
+
   <app-cart></app-cart>
 </div>

@@ -18,7 +18,7 @@ import { TicketsService } from '../services/tickets.service';
 export class DetailsComponent implements OnInit {
 
   detailEvent: any;
-
+  errorMessage: string = "";
 
 
   constructor(private router: Router,
@@ -32,11 +32,14 @@ export class DetailsComponent implements OnInit {
 
   loadDetail(): void {
     this.ticketsService.getEventInfo()
-      .subscribe(dataEvent => {
+      .subscribe({ next: dataEvent => {
         this.detailEvent = dataEvent;
         console.log("Detail event");
         console.log(this.detailEvent);
-      });
+        this.errorMessage = "";
+      },
+      error: error => {this.errorMessage = "EVENT INFO NOT FOUND"}});
+
   }
 
   removeLocation(singleDetail: Calendar) {

@@ -1,0 +1,17 @@
+.table{
+  width: 100%;
+
+}
+
+table td {
+  width: 100px;
+}
+
+/*RESPONSIVE*/
+/*Very Small devices - Max width 400px*/
+@media only screen and (max-width: 400px){
+  h1 {
+    font-size: 20px;
+  }
+}
+
