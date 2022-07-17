@@ -14,6 +14,8 @@ import { TicketsService } from '../services/tickets.service';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
+
+
 export class ListComponent implements OnInit {
 
   listEvents: any = [];
@@ -32,6 +34,8 @@ export class ListComponent implements OnInit {
     this.ticketsService.getEvents()
       .subscribe(dataEvents => {
         this.listEvents = dataEvents;
+        this.listEvents.sort((a: Billboard, b: Billboard) =>
+          parseInt(a.endDate) - parseInt(b.endDate) );
         console.log("List Events");
         console.log(this.listEvents);
       })
