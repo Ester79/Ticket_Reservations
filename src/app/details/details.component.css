@@ -7,7 +7,6 @@ button {
 
 .container{
   display: flex;
-  border: 1px solid;
   margin-top: 20px;
 }
 

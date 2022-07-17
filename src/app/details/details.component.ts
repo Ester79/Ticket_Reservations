@@ -38,7 +38,7 @@ export class DetailsComponent implements OnInit {
         console.log(this.detailEvent);
         this.errorMessage = "";
       },
-      error: error => {this.errorMessage = "EVENT INFO NOT FOUND"}});
+      error: error => {this.errorMessage = "EVENT INFO NOT FOUND for " + this.ticketsService.eventSelected.title} });
 
   }
 
