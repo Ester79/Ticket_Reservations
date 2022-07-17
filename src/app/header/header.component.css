@@ -1,7 +1,8 @@
 nav{
   background-color: grey;
   height: 80px;
-  align-content: center;
+  justify-content: center;
+  align-items: center;
   color: white;
 }
 
